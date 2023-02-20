@@ -24,15 +24,15 @@ RUN apk add --no-cache \
   supervisor
 
 # Configure nginx - http
-ADD /vagrant/nginx/config/nginx.conf /etc/nginx/nginx.conf
+COPY /config/nginx.conf /etc/nginx/nginx.conf
 # Configure nginx - default server
-ADD /vagrant/nginx/config/conf.d /etc/nginx/conf.d/
+COPY /config/conf.d /etc/nginx/conf.d/
 
 # Configure PHP-FPM
-ADD /vagrant/nginx/config/fpm-pool.conf /etc/php81/php-fpm.d/www.conf
+COPY /config/fpm-pool.conf /etc/php81/php-fpm.d/www.conf
 
 # Configure supervisord
-ADD /vagrant/nginx/config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+copy /config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Expose the port nginx is reachable on
 EXPOSE 80
